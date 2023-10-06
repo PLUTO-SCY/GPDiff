@@ -38,7 +38,8 @@ Our framework has the potential to revolutionize smart city applications in data
 -->
 
 ## Data
-The data used for training and evaluation can be found in .
+The data used for training and evaluation can be found in [Time-Series data](https://drive.google.com/drive/folders/1dI6sV67LxBrksnBdYputnB3rrIeqYzRR?usp=sharing).
+After downloading the data, move them to ./Data.
 
 For each city, we provide the following data:
 - ``Graph data``: It records the adjacency matrix of the spatiotemporal graph. 
@@ -46,11 +47,19 @@ For each city, we provide the following data:
 
 ## Model Training
 
-To train a model with the traffic dataset, run:
+To train node-level models with the traffic dataset, run:
+
+``cd Pretrain``
+
+``CUDA_VISIBLE_DEVICES=0 python main.py --taskmode task4 --model v_GWN --test_data metr-la --ifnewname 1 --aftername TrafficData``
+
+After full-trained, run Pretrain\PrepareParams\model2tensor.py to extract parameters from the trained model. And put the params-dataset in ./Data.
+
+To train diffusion model and generate the parameters of the target city:
 
 ``cd GPDiff``
 
-``CUDA_VISIBLE_DEVICES=3 python 1Dmain.py --expIndex 140 --targetDataset metr-la --modeldim 512 --epochs 80000 --diffusionstep 500 --basemodel v_GWN  --denoise Trans1``
+``CUDA_VISIBLE_DEVICES=0 python 1Dmain.py --expIndex 140 --targetDataset metr-la --modeldim 512 --epochs 80000 --diffusionstep 500 --basemodel v_GWN  --denoise Trans1``
 
 - ``expIndex`` assigns a special number to the experiment.
 - ``targetDataset`` specifies the target dataset, which can be selected from ['DC', 'BM', 'man', 'metr-la', 'pemes-bay', 'shenzhen', 'chengdu_m'].
@@ -67,9 +76,14 @@ To train a model with the traffic dataset, run:
 
 ![conditioning](assets/condition.png "Conditioning Strategies")
 
+The sample result is in GPDiff/Output/expXX/.
+
 ## Evaluation
-To generate the parameters of the target city, run:
-``xxx``
+To finetune the generated parameters of the target city, run:
+
+``cd Pretrain``
+
+``CUDA_VISIBLE_DEVICES=0 python main.py --taskmode task7 --model v_GWN --test_data metr-la --ifnewname 1 --aftername finetune_7days --epochs 600 --target_days 7``
 
 <!--
 ## Model training & Evaluating
