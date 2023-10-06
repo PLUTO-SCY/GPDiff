@@ -34,4 +34,5 @@
     - Trans4: Cross attention.
     - Trans5: Adaptive LayerNorm.
 ```bash
+cd GPDiff
 CUDA_VISIBLE_DEVICES=3 python 1Dmain.py --expIndex 140 --targetDataset metr-la --modeldim 512 --epochs 80000 --diffusionstep 500 --basemodel v_GWN  --denoise Trans1
