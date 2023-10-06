@@ -1,5 +1,5 @@
 # A Generative Pre-Training Framework for Spatio-Temporal Graph Transfer Learning
-![model framework](pics/framework.png "Model Architecture")
+![model framework](assets/framework.png "Model Architecture")
 
 ## Requirements
 - accelerate==0.23.0
