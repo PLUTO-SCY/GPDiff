@@ -1,8 +1,9 @@
-import torch
+import sys
+
 import numpy as np
+import torch
 from numpy import random
 from sklearn.datasets import make_moons
-import sys
 
 
 def datapreparing(targetDataset, basemodel):
@@ -37,9 +38,9 @@ def datapreparing(targetDataset, basemodel):
 
     # load full pretrained params
     if basemodel=='v_GWN': 
-        rawdata = np.load('Data/ModelParams_GWN_91904_traffic.npy') 
+        rawdata = np.load('../Data/ModelParams_GWN_91904_traffic.npy') 
     else: 
-        rawdata = np.load('Data/ModelParams_STGCN_16960_656.npy')
+        rawdata = np.load('../Data/ModelParams_STGCN_16960_656.npy')
 
     genTarget = rawdata[genid]
     training_seq = rawdata[trainid]
@@ -67,7 +68,7 @@ def datapreparing(targetDataset, basemodel):
     if targetDataset in ['metr-la', 'pems-bay', 'shenzhen', 'chengdu_m', 'TrafficNone']:
         kgEmb = np.ones((1683, 128))
     else:
-        kgEmb = np.load('Data/Emb/KGEmb.npy')  
+        kgEmb = np.load('../Data/Emb/KGEmb.npy')  
     kgEmb = kgEmb.astype(np.float32)
 
     kgtrainEmb = kgEmb[trainid]
@@ -75,9 +76,9 @@ def datapreparing(targetDataset, basemodel):
     kgtrainEmb= np.repeat(kgtrainEmb, repeatNum, axis=0)   
     
     if targetDataset in ['metr-la', 'pems-bay', 'shenzhen', 'chengdu_m', 'TrafficNone']:
-        timeEmb = np.load('Data/Emb/trafficTimeEmb.npy')
+        timeEmb = np.load('../Data/Emb/trafficTimeEmb.npy')
     else:
-        timeEmb = np.load('Data/Emb/CrowdTimeEmb.npy')
+        timeEmb = np.load('../Data/Emb/CrowdTimeEmb.npy')
         
     timeEmb = timeEmb.astype(np.float32)
     timetrainEmb = timeEmb[trainid]
