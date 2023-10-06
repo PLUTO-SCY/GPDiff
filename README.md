@@ -65,6 +65,7 @@ To train a model with the traffic dataset, run:
   - Trans4: Post-adaptive Conditioning.
   - Trans5: Adaptive norm conditioning.
 
+![conditioning](assets/condition.png "Conditioning Strategies")
 
 ## Evaluation
 To generate the parameters of the target city, run:
