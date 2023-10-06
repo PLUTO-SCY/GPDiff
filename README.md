@@ -11,7 +11,7 @@ Our framework has the potential to revolutionize smart city applications in data
 - Tested OS: Linux
 - Python >= 3.8
 - torch == 1.12.0
-- torch_geometric==2.2.0
+- torch_geometric == 2.2.0
 - Tensorboard
 
 ### Dependencies:
