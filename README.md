@@ -16,7 +16,7 @@ Our framework has the potential to revolutionize smart city applications in data
 
 ### Dependencies:
 1. Install Pytorch with the correct CUDA version.
-2. Use the ``pip install -r requirements. txt`` command to install all of the Python modules and packages used in this project.
+2. Use the ``pip install -r requirements.txt`` command to install all of the Python modules and packages used in this project.
 
 <!--
 ## Requirements
