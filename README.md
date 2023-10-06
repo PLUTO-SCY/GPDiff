@@ -78,7 +78,7 @@ To train diffusion model and generate the parameters of the target city:
 
 The sample result is in GPDiff/Output/expXX/.
 
-## Finetune and Evaluation
+## Finetune and Evaluate
 To finetune the generated parameters of the target city and evaluate, run:
 
 ``cd Pretrain``
