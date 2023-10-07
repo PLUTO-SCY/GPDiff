@@ -43,7 +43,14 @@ After downloading the data, move them to ./Data.
 
 For each city, we provide the following data:
 - ``Graph data``: It records the adjacency matrix of the spatiotemporal graph. 
-- ``Time series data``: It records the temporal sequential data for each node. 
+- ``Time series data``: It records the temporal sequential data for each node.
+
+We provide two time-series datasets: crowd flow (including DC, BM, man) and traffic speed (including metr-la, pems-bay, shenzhen, chengdu_m).
+
+The details of these two data sets are as follows:
+
+<img src="assets/datasets-info.png" alt="datasets information" title="datasets information" style="zoom:67%;" />
+
 
 ## Model Training
 
@@ -84,6 +91,14 @@ To finetune the generated parameters of the target city and evaluate, run:
 ``cd Pretrain``
 
 ``CUDA_VISIBLE_DEVICES=0 python main.py --taskmode task7 --model v_GWN --test_data metr-la --ifnewname 1 --aftername finetune_7days --epochs 600 --target_days 7``
+
+  - ``taskmode`` 'task7' means finetune after diffusion sampling.
+  - ``model`` specifies the spatio-temporal graph model, which can be selected from ['v_STGCN5', 'v_GWN'].
+  - ``test_data`` specifies the dataset, which can be selected from ['DC', 'BM', 'man', 'metr-la', 'pemes-bay', 'shenzhen', 'chengdu_m'].
+  - ``ifnewname`` assign 1 to better distinguish the results of the current experiment.
+  - ``aftername`` Use with --ifnewname 1 to give an identification name to the log file and results folder of the current experiment.
+  - ``epochs`` specifies the number of iterations.
+  - ``target_days`` specifies the amount of data used in finetune stage.
 
 <!--
 ## Model training & Evaluating
